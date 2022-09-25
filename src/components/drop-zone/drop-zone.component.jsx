@@ -20,9 +20,15 @@ const DropZone = ({ handleFileDrop, image_src }) => {
     wrappedRef.current.classList.remove('drop-zone__over');
   }
 
+  const handlePageReload = event => {
+    event.preventDefault();
+
+    window.location.reload()
+  }
+
   return (
     image_src ? (
-      <div className='background-image__container'>
+      <div className='background-image__container' onClick={handlePageReload}>
         <img className='background-image' src={image_src} alt='server-response' />
       </div>
     ) : (

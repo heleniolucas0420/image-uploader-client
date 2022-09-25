@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import { ToastContainer, toast, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import DropZone from '../drop-zone/drop-zone.component';
 import CustomButton from '../custom-button/custom-button.component';
 
@@ -35,6 +38,21 @@ const Card = () => {
         .then((response) => {
           setResponseData(response.data.response_data);
           onResponseSuccess(file);
+
+          toast.success(
+            'Image uploaded successfuly! Click on the uploaded image to upload a new image🤩',
+            {
+              position: 'bottom-right',
+              autoClose: 9000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              transition: Zoom,
+              icon: () => {},
+            }
+          );
         })
         .catch((error) => console.log(error));
     }
@@ -74,9 +92,10 @@ const Card = () => {
                 handleInputChange={handleInputChange}
                 loaded={image_url}
                 handleCopyToClipboard={handleCopyToClipboard}
-                text={copied ? 'Copied': 'Copy Link'}
+                text={copied ? 'Copied' : 'Copy Link'}
               />
             </div>
+            <ToastContainer />
           </React.Fragment>
         ) : (
           <React.Fragment>
