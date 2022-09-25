@@ -1,0 +1,30 @@
+@mixin textStyle {
+  font-style: normal;
+  font-size: 0.86rem;
+  // line-height: 1.06rem;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin-bottom: 0.3rem;
+
+  .footer-text {
+    @include textStyle();
+    color: #A9A9A9;
+
+    .footer-text__name {
+      @include textStyle();
+      color: #6d6a6a;
+      text-align: center;
+    }
+
+    .footer-text__chalenge-link {
+      @include textStyle();
+      text-decoration: none;
+      color: #A9A9A9;
+    }
+  }
+}

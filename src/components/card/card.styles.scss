@@ -1,0 +1,100 @@
+@mixin elements {
+  .card-container__elements {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    .image-uploaded__icon {
+      font-size: 2rem;
+      color: #1c894b;
+    }
+
+    .card-title {
+      font-style: normal;
+      font-weight: bold;
+      // font-size: 1.4rem;
+      line-height: 1.7rem;
+      letter-spacing: -0.035em;
+      color: #4F4F4F;
+      margin: 0;
+    }
+
+    .card-file-type {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.78rem;
+      line-height: 0.94rem;
+      text-align: center;
+      letter-spacing: -0.035em;
+      color: #828282;
+    }
+
+    .buttons {
+      align-self: center;
+    }
+
+    .image-link__container {
+      align-self: center;
+      width: 100%;
+      background: #F6F8FB;
+      border: 1px solid #E0E0E0;
+      border-radius: 8px;
+      margin-top: 0.7rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.12rem;
+
+
+      .image-link__link {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.65rem;
+        line-height: 0.75rem;
+        text-align: center;
+        letter-spacing: -0.035em;
+        color: #4F4F4F;
+        margin: 0 0.6rem;
+      }
+    }
+
+    .card-text {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.88rem;
+      line-height: 0.94rem;
+      text-align: center;
+      letter-spacing: -0.035em;
+      color: #828282;
+    }
+  }
+}
+
+.card-container {
+  align-self: center;
+  height: 26.31rem;
+  width: 22.13rem;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px 0px #0000001A;
+  padding: 2.25rem 2rem;
+  margin-top: 4rem;
+
+  @include elements();
+}
+
+.loaded {
+  align-self: center;
+  height: 25.31rem;
+  width: 22.13rem;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 12px 0px #0000001A;
+  padding: 2.25rem 2rem;
+  margin-top: 4rem;
+
+  @include elements();
+}

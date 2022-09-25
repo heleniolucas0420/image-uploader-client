@@ -1,0 +1,40 @@
+.custom-button__container {
+  input {
+    display: none;
+  }
+
+  .custom-button {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.85rem;
+    line-height: 1rem;
+    text-align: center;
+    letter-spacing: -0.035em;
+    width: 7rem;
+    height: 1.5rem;
+    background: #2F80ED;
+    border-radius: 8px;
+    color: #FFFFFF;
+    border: 1px solid #2F80ED;
+    padding: 0.5rem 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .custom-button__copy-link {
+    min-width: 4.91rem;
+    width: fit-content;
+    height: 2.2rem;
+    background: #2F80ED;
+    color: #FFFFFF;
+    border: 1px solid #2F80ED;
+    border-radius: 5.5px;
+    padding: 0.5rem 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
