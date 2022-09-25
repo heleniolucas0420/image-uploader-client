@@ -31,7 +31,7 @@ const Card = () => {
       const url =
         process.env.NODE_ENV === 'development'
           ? 'http://localhost:4000/images/upload-image'
-          : '/images/upload-image';
+          : 'https://fastidious-croissant-e6bd08.netlify.app/images/upload-image';
 
       axios
         .post(url, form_data)
@@ -100,7 +100,7 @@ const Card = () => {
         ) : (
           <React.Fragment>
             <h2 className='card-title'>Upload your image</h2>
-            <span className='card-file-type'>File should be Jpeg, Png,...</span>
+            <span className='card-file-type'>File should be Jpeg, Png, ...</span>
             <DropZone handleFileDrop={handleFileDrop} image_src={image_url} />
             <span className='card-text'>Or</span>
             <div className='buttons'>
