@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import DropZone from '../drop-zone/drop-zone.component';
 import CustomButton from '../custom-button/custom-button.component';
+import Spinner from '../spinner/spinner.component';
 
 import './card.styles.scss';
 
@@ -14,6 +15,7 @@ const Card = () => {
   const [image_url, setImageUrl] = useState(null);
   const [response_data, setResponseData] = useState('');
   const [copied, setCopied] = useState(false);
+  const [is_loading, setIsLoading] = useState(false);
 
   const onResponseSuccess = (file) => {
     const reader = new FileReader();
@@ -25,10 +27,15 @@ const Card = () => {
 
   useEffect(() => {
     if (file) {
+      setIsLoading(true);
+
       const form_data = new FormData();
       form_data.append('image', file);
 
-      const url = 'https://murmuring-waters-99242.herokuapp.com/images/upload-image';
+      const url =
+        process.env.NODE_ENV === 'development'
+          ? 'http://localhost:4000/images/upload-image'
+          : 'https://murmuring-waters-99242.herokuapp.com/images/upload-image';
 
       axios
         .post(url, form_data)
@@ -49,8 +56,13 @@ const Card = () => {
               transition: Zoom,
             }
           );
+
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 1000);
         })
         .catch((error) => console.log(error));
+
     }
   }, [file]);
 
@@ -73,7 +85,12 @@ const Card = () => {
   return (
     <div className={`${image_url ? 'loaded' : 'card-container'}`}>
       <div className='card-container__elements'>
-        {image_url ? (
+        {is_loading ? (
+          <React.Fragment>
+            <h2 className='card-title'>Loading...</h2>
+            <Spinner />
+          </React.Fragment>
+        ) : image_url ? (
           <React.Fragment>
             <span className='material-symbols-rounded image-uploaded__icon'>
               task_alt
@@ -96,7 +113,9 @@ const Card = () => {
         ) : (
           <React.Fragment>
             <h2 className='card-title'>Upload your image</h2>
-            <span className='card-file-type'>File should be Jpeg, Png, ...</span>
+            <span className='card-file-type'>
+              File should be Jpeg, Png, ...
+            </span>
             <DropZone handleFileDrop={handleFileDrop} image_src={image_url} />
             <span className='card-text'>Or</span>
             <div className='buttons'>
