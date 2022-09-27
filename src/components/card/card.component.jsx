@@ -28,10 +28,7 @@ const Card = () => {
       const form_data = new FormData();
       form_data.append('image', file);
 
-      const url =
-        process.env.NODE_ENV === 'development'
-          ? 'http://localhost:4000/images/upload-image'
-          : 'https://fastidious-croissant-e6bd08.netlify.app/images/upload-image';
+      const url = 'https://murmuring-waters-99242.herokuapp.com/images/upload-image';
 
       axios
         .post(url, form_data)
@@ -40,17 +37,16 @@ const Card = () => {
           onResponseSuccess(file);
 
           toast.success(
-            'Image uploaded successfuly! Click on the uploaded image to upload a new image🤩',
+            'Image uploaded successfuly! Click on the uploaded image to upload a new one🤩',
             {
               position: 'bottom-right',
               autoClose: 9000,
-              hideProgressBar: false,
+              hideProgressBar: true,
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,
               progress: undefined,
               transition: Zoom,
-              icon: () => {},
             }
           );
         })
